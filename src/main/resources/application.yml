@@ -1,0 +1,22 @@
+
+server:
+  port: 8866
+spring:
+  application:
+      name: cloud-eureka-server
+  security:
+    user:
+      name: root
+      password: 123456
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://root:123456@${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false #测试时关闭自我保护机制保证不可用服务及时被踢出
+    eviction-interval-timer-in-ms: 2000
+
